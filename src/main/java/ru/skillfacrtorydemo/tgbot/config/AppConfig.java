@@ -11,8 +11,9 @@ import ru.skillfacrtorydemo.tgbot.dto.GetCursOnDateXmlResult;
 import ru.skillfacrtorydemo.tgbot.dto.ValuteCursOnDate;
 import ru.skillfacrtorydemo.tgbot.service.CentralRussianBankService;
 
-import jakarta.xml.soap.MessageFactory;
-//import javax.xml.soap.MessageFactory;
+//import jakarta.xml.soap.MessageFactory;
+import javax.xml.soap.MessageFactory;
+
 import javax.xml.soap.SOAPConstants;
 import javax.xml.soap.SOAPException;
 import java.nio.charset.StandardCharsets;
@@ -20,7 +21,7 @@ import java.nio.charset.StandardCharsets;
 @Configuration
 public class AppConfig {
     @Bean
-    public CentralRussianBankService cbrService() throws  jakarta.xml.soap.SOAPException {
+    public CentralRussianBankService cbrService() throws  SOAPException {
         CentralRussianBankService cbrService = new CentralRussianBankService();
         Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller();
         MessageFactory msgFactory = MessageFactory.newInstance(SOAPConstants.SOAP_1_2_PROTOCOL);

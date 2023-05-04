@@ -12,7 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CurrencyController {
     private final CentralRussianBankService centralRussianBankService;
-    @GetMapping
+    @GetMapping("/")
     public List<ValuteCursOnDate> getValuteCursOnDate() throws Exception{
         return centralRussianBankService.getCurrenciesFromCbr();
     }
