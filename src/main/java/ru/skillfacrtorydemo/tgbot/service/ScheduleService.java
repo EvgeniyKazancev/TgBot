@@ -1,6 +1,7 @@
 package ru.skillfacrtorydemo.tgbot.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import ru.skillfacrtorydemo.tgbot.dto.ValuteCursOnDate;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ScheduleService {
     private final ActiveChatRepository activeChatRepository;
+
     private final BotService botService;
     private final CentralRussianBankService centralRussianBankService;
     private final List<ValuteCursOnDate> previousRates = new ArrayList<>();
@@ -43,7 +45,4 @@ public class ScheduleService {
             e.printStackTrace();
         }
     }
-
-
-
 }
