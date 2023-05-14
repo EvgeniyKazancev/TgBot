@@ -66,6 +66,7 @@ public class BotService extends TelegramLongPollingBot {
             if (CURRENT_RATES.equalsIgnoreCase(message.getText())) {
                 for (ValuteCursOnDate valuteCursOnDate : centralRussianBankService.getCurrenciesFromCbr()) {
                     response.setText(StringUtils.defaultIfBlank(response.getText(), "") + valuteCursOnDate.getName() + " - " + valuteCursOnDate.getCourse() + "\n");
+
                 }
             } else if (ADD_INCOME.equalsIgnoreCase(message.getText())) {
                 response.setText("Отправьте мне сумму полученного дохода");
@@ -85,7 +86,7 @@ public class BotService extends TelegramLongPollingBot {
         } catch (TelegramApiException e) {
             e.printStackTrace();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Возникла проблема при получении данных от сервиса ЦБ РФ ",e);
         }
     }
 
