@@ -32,7 +32,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class BotService extends TelegramLongPollingBot {
     private static final String CURRENT_RATES = "/currentrates";
-    private static final String ADD_INCOME = "/addincome";
+    static final String ADD_INCOME = "/addincome";
     private static final String ADD_SPEND = "/addspend";
 
     private final FinanceService financeService;
