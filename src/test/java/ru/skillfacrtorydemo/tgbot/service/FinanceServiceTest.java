@@ -1,12 +1,14 @@
 package ru.skillfacrtorydemo.tgbot.service;
 
 import org.junit.Assert;
+
+
 import org.junit.jupiter.api.*;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Bean;
+
 import ru.skillfacrtorydemo.tgbot.repository.IncomeRepository;
 import ru.skillfacrtorydemo.tgbot.repository.SpendRepository;
 
@@ -44,8 +46,8 @@ public class FinanceServiceTest {
 
     // тестовый метод, помечаем его аннотацией @Test
     // тестовый метод для первого кейса
-    @Test
     @DisplayName("ADD_INCOME_test")
+    @Test
     public void addFinanceOperationAddIncomeTest() {
         // установили произвольное значение переменной для отправки в метод
         String price = "150.0";
@@ -55,8 +57,8 @@ public class FinanceServiceTest {
         Assert.assertEquals("Доход в размере " + price + "успешно добавлен", message);
     }
 
-    @Test
     @DisplayName("non_ADD_INCOM_test")
+    @Test
     public void addFinanceOperationElseBranchTest() {
         // снова даём значение переменной
         String price = "200";
