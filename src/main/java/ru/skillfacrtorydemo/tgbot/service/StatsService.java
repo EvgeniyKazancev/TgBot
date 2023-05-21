@@ -13,4 +13,7 @@ public class StatsService {
     public  int getCountOfIncomesThatGreater(BigDecimal amount){
         return statsRepository.getCountOfIncomesThatGreaterThan(amount);
     }
+    public  int getCountSpendThatGreater(Long amount){
+        return statsRepository.getCountSpendThatGreaterThan(amount);
+    }
 }

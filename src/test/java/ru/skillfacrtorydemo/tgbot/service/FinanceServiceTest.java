@@ -43,7 +43,7 @@ public class FinanceServiceTest {
     }
 
 
-// тестовый метод для первого кейса
+    // тестовый метод для первого кейса
     @DisplayName("ADD_INCOME_test")
     @Test
     public void addFinanceOperationAddIncomeTest() {
@@ -54,6 +54,7 @@ public class FinanceServiceTest {
         // убеждаемся, что получили ожидаемый результат
         Assert.assertEquals("Доход в размере " + price + " был успешно добавлен", message);
     }
+
     // тестовый метод для второго кейса, всё аналогично первому, но с другими параметрами
     @DisplayName("non_ADD_INCOM_test")
     @Test
@@ -66,5 +67,9 @@ public class FinanceServiceTest {
         Assert.assertEquals("Расход в размере " + price + " успешно добавлен", message);
     }
 
-
+//    @DisplayName("Test_Spend")
+//    @Test
+//    public void getCountSpendTest(){
+//
+//    }
 }

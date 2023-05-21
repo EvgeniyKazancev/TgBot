@@ -12,6 +12,7 @@ import ru.skillfacrtorydemo.tgbot.service.StatsService;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.concurrent.atomic.LongAccumulator;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,6 +27,11 @@ public class CurrencyController {
     @ApiOperation(value = "Получение количества пополнений, которые превышают определенную сумму")
     public int getStatsAboutIncomesThatGreater(@RequestParam(value = "amount")BigDecimal amount){
         return statsService.getCountOfIncomesThatGreater(amount);
+    }
+    @GetMapping("/getSpend")
+    @ApiOperation(value = "Получение трат выше определенной суммы")
+    public  int getSpendAboutCertainAmount(@RequestParam(value = "amount")Long amount){
+        return statsService.getCountSpendThatGreater(amount);
     }
 
 }

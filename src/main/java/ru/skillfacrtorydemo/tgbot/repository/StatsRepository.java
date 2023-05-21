@@ -23,6 +23,12 @@ private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
         return namedParameterJdbcTemplate.queryForObject("SELECT count(*) FROM INCOMES WHERE INCOME > :amount",parameters,new StatsRowMapper());
       //return   jdbcTemplate.queryForObject("SELECT count(*) FROM INCOMES WHERE INCOME >?", Integer.class, amount);
     }
+    public  int getCountSpendThatGreaterThan(Long amount){
+        Map<String,Object> param = new HashMap<>();
+        param.put("amount",amount);
+        return namedParameterJdbcTemplate.queryForObject("SELECT count(*) FROM SPEND WHERE spend > :amount",param,new StatsRowMapper());
+
+    }
     private static final class StatsRowMapper implements RowMapper<Integer>{
 
         @Override
