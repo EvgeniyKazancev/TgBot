@@ -67,9 +67,5 @@ public class FinanceServiceTest {
         Assert.assertEquals("Расход в размере " + price + " успешно добавлен", message);
     }
 
-//    @DisplayName("Test_Spend")
-//    @Test
-//    public void getCountSpendTest(){
-//
-//    }
+
 }

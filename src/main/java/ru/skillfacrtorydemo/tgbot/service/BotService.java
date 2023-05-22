@@ -16,6 +16,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.skillfacrtorydemo.tgbot.dto.ValuteCursOnDate;
 import ru.skillfacrtorydemo.tgbot.entity.ActiveChat;
 import ru.skillfacrtorydemo.tgbot.repository.ActiveChatRepository;
+import ru.skillfacrtorydemo.tgbot.repository.StatsRepository;
 import ru.skillfacrtorydemo.tgbot.service.CentralRussianBankService;
 
 import javax.annotation.PostConstruct;
@@ -41,21 +42,28 @@ public class BotService extends TelegramLongPollingBot {
     private String apiKey;
     @Value("${bot.name}")
     private String name;
+    private List<StatsService> income = new ArrayList<>();
+
+    private List<StatsService> spend = new ArrayList<>();
+
 
     private final ActiveChatRepository activeChatRepository;
     private Map<Long, List<String>> previousCommands = new ConcurrentHashMap<>();
-    private void putPreviousCommand(Long chatId,String command){
-        if (previousCommands.get(chatId) == null){
+
+    private void putPreviousCommand(Long chatId, String command) {
+        if (previousCommands.get(chatId) == null) {
             List<String> commands = new ArrayList<>();
             commands.add(command);
-            previousCommands.put(chatId,commands);
-        }else {
+            previousCommands.put(chatId, commands);
+        } else {
             previousCommands.get(chatId).add(command);
         }
     }
-    private String getPreviousCommand(Long chatId){
+
+    private String getPreviousCommand(Long chatId) {
         return previousCommands.get(chatId).get(previousCommands.get(chatId).size() - 1);
     }
+
     @Override
     public void onUpdateReceived(Update update) {
         Message message = update.getMessage();//Этой строчкой мы получаем сообщение от пользователя
@@ -86,9 +94,10 @@ public class BotService extends TelegramLongPollingBot {
         } catch (TelegramApiException e) {
             e.printStackTrace();
         } catch (Exception e) {
-            log.error("Возникла проблема при получении данных от сервиса ЦБ РФ ",e);
+            log.error("Возникла проблема при получении данных от сервиса ЦБ РФ ", e);
         }
     }
+
 
     public void sendNotificationToAllActiveChats(String message, Set<Long> chatIds) {
         for (Long id : chatIds) {
@@ -101,6 +110,14 @@ public class BotService extends TelegramLongPollingBot {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void filterIncomeAndSpend(StatsService statsService) {
+
+        income.add(statsService.getCountOfIncomesThatGreater());
+        spend.add(statsService.getCountSpendThatGreater());
+
+
     }
 
     @PostConstruct

@@ -9,6 +9,7 @@ import ru.skillfacrtorydemo.tgbot.repository.IncomeRepository;
 import ru.skillfacrtorydemo.tgbot.repository.SpendRepository;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -35,4 +36,5 @@ public class FinanceService {
         }
         return message;
     }
+    public List<Income> getIncome
 }

@@ -16,20 +16,23 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class StatsRepository {
     private final JdbcTemplate jdbcTemplate;
-private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    public int getCountOfIncomesThatGreaterThan(BigDecimal amount){
-        Map<String,Object> parameters = new HashMap<>();
-        parameters.put("amount",amount);
-        return namedParameterJdbcTemplate.queryForObject("SELECT count(*) FROM INCOMES WHERE INCOME > :amount",parameters,new StatsRowMapper());
-      //return   jdbcTemplate.queryForObject("SELECT count(*) FROM INCOMES WHERE INCOME >?", Integer.class, amount);
+    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
+    public int getCountOfIncomesThatGreaterThan(BigDecimal amount) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("amount", amount);
+        return namedParameterJdbcTemplate.queryForObject("SELECT count(*) FROM INCOMES WHERE INCOME > :amount", parameters, new StatsRowMapper());
+        //return   jdbcTemplate.queryForObject("SELECT count(*) FROM INCOMES WHERE INCOME >?", Integer.class, amount);
     }
-    public  int getCountSpendThatGreaterThan(Long amount){
-        Map<String,Object> param = new HashMap<>();
-        param.put("amount",amount);
-        return namedParameterJdbcTemplate.queryForObject("SELECT count(*) FROM SPEND WHERE spend > :amount",param,new StatsRowMapper());
+
+    public int getCountSpendThatGreaterThan(Long amount) {
+        Map<String, Object> param = new HashMap<>();
+        param.put("amount", amount);
+        return namedParameterJdbcTemplate.queryForObject("SELECT count(*) FROM SPEND WHERE spend > :amount", param, new StatsRowMapper());
 
     }
-    private static final class StatsRowMapper implements RowMapper<Integer>{
+
+    private static final class StatsRowMapper implements RowMapper<Integer> {
 
         @Override
         public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {

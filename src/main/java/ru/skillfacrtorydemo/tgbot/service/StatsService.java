@@ -16,4 +16,8 @@ public class StatsService {
     public  int getCountSpendThatGreater(Long amount){
         return statsRepository.getCountSpendThatGreaterThan(amount);
     }
+//    public void filterIncomesAndSpend(StatsRepository statsRepository){
+//
+//        if (statsRepository  )
+//    }
 }
