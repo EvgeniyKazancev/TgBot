@@ -112,13 +112,7 @@ public class BotService extends TelegramLongPollingBot {
         }
     }
 
-    public void filterIncomeAndSpend(StatsService statsService) {
 
-        income.add(statsService.getCountOfIncomesThatGreater());
-        spend.add(statsService.getCountSpendThatGreater());
-
-
-    }
 
     @PostConstruct
     public void start() {
