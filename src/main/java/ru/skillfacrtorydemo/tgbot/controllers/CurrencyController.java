@@ -36,12 +36,12 @@ public class CurrencyController {
     public  int getSpendAboutCertainAmount(@RequestParam(value = "amount")Long amount){
         return statsService.getCountSpendThatGreater(amount);
     }
-    @GetMapping("/getIncomes")
+    @GetMapping("/getIncomesFilter")
     @ApiOperation(value = "Получение дохода выше, определенной суммы")
     public List<Integer> getFilterIncomes(@RequestParam(value = "amount")Long amount){
         return filterIncomesAndSpend.filterIncomes(amount);
     }
-    @GetMapping("/getSpend")
+    @GetMapping("/getSpendFilter")
     @ApiOperation(value = "Получение расхода выше, определенной суммы")
     public List<Integer> getFilterSpend(@RequestParam(value = "amount")Long amount){
         return filterIncomesAndSpend.filterSpends(amount);
