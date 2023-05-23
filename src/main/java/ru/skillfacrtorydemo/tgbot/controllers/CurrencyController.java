@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.skillfacrtorydemo.tgbot.dto.ValuteCursOnDate;
+import ru.skillfacrtorydemo.tgbot.entity.Income;
+import ru.skillfacrtorydemo.tgbot.entity.Spend;
 import ru.skillfacrtorydemo.tgbot.repository.IncomeRepository;
 import ru.skillfacrtorydemo.tgbot.repository.SpendRepository;
 import ru.skillfacrtorydemo.tgbot.service.CentralRussianBankService;
@@ -20,7 +22,7 @@ import java.util.List;
 public class CurrencyController {
     private final CentralRussianBankService centralRussianBankService;
     private final StatsService statsService;
-    private final FilterIncomesAndSpend filterIncomesAndSpend;
+   private final FilterIncomesAndSpend filterIncomesAndSpend;
 
     @GetMapping("/")
     public List<ValuteCursOnDate> getValuteCursOnDate() throws Exception{
@@ -38,13 +40,13 @@ public class CurrencyController {
     }
     @GetMapping("/getIncomesFilter")
     @ApiOperation(value = "Получение дохода выше, определенной суммы")
-    public List<Integer> getFilterIncomes(@RequestParam(value = "amount")Long amount){
-        return filterIncomesAndSpend.filterIncomes(amount);
+    public List<Income> getFilterIncomes(@RequestParam(value = "amount")Long amount,Long chatId){
+        return filterIncomesAndSpend.filterIncomes(chatId,amount);
     }
     @GetMapping("/getSpendFilter")
     @ApiOperation(value = "Получение расхода выше, определенной суммы")
-    public List<Integer> getFilterSpend(@RequestParam(value = "amount")Long amount){
-        return filterIncomesAndSpend.filterSpends(amount);
+    public List<Spend> getFilterSpend(@RequestParam(value = "amount")Long amount,Long chatId){
+        return filterIncomesAndSpend.filterSpends(chatId,amount);
     }
 
 }

@@ -6,12 +6,13 @@ import ru.skillfacrtorydemo.tgbot.entity.Income;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 
 public interface IncomeRepository extends JpaRepository<Income,Long> {
     List<Income> getAllByChatId(Long chatId);
-
+    Income getIncomeById(Long Id);
     List<Income> findByChatIdOrderByIncomeAsc(Long chatId);
 
 

@@ -5,11 +5,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
+import ru.skillfacrtorydemo.tgbot.entity.Income;
 
 import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -21,6 +23,7 @@ public class StatsRepository {
     public int getCountOfIncomesThatGreaterThan(BigDecimal amount) {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("amount", amount);
+        jdbcTemplate.queryForObject("SELECT * FROM INCOMES WHERE Id = 1", Income.class);
         return namedParameterJdbcTemplate.queryForObject("SELECT count(*) FROM INCOMES WHERE INCOME > :amount", parameters, new StatsRowMapper());
         //return   jdbcTemplate.queryForObject("SELECT count(*) FROM INCOMES WHERE INCOME >?", Integer.class, amount);
     }
@@ -31,6 +34,7 @@ public class StatsRepository {
         return namedParameterJdbcTemplate.queryForObject("SELECT count(*) FROM SPEND WHERE spend > :amount", param, new StatsRowMapper());
 
     }
+
 
     private static final class StatsRowMapper implements RowMapper<Integer> {
 
