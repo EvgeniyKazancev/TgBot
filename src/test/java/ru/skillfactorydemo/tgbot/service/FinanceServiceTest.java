@@ -1,4 +1,4 @@
-package ru.skillfacrtorydemo.tgbot.service;
+package ru.skillfactorydemo.tgbot.service;
 
 import org.junit.Assert;
 
@@ -9,8 +9,15 @@ import org.mockito.Mock;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
+import ru.skillfacrtorydemo.tgbot.entity.Spend;
 import ru.skillfacrtorydemo.tgbot.repository.IncomeRepository;
 import ru.skillfacrtorydemo.tgbot.repository.SpendRepository;
+import ru.skillfacrtorydemo.tgbot.service.FinanceService;
+
+import java.math.BigDecimal;
+import java.util.Optional;
+
+
 
 // Класс-тест для тестирования FinanceService
 //*/
@@ -48,7 +55,8 @@ public class FinanceServiceTest {
     @Test
     public void addFinanceOperationAddIncomeTest() {
         // установили произвольное значение переменной для отправки в метод
-        String price = "150.0";
+
+         String price = "150.0";
         // обращаемся к методу с произвольными параметрами и сохраняем результат в переменную
         String message = financeService.addFinanceOperation("/addincome", price, 500L);
         // убеждаемся, что получили ожидаемый результат
@@ -66,6 +74,5 @@ public class FinanceServiceTest {
         // ����������, ��� �������� ��������� ���������
         Assert.assertEquals("Расход в размере " + price + " успешно добавлен", message);
     }
-
 
 }

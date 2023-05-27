@@ -1,0 +1,1 @@
+INSERT INTO SPEND (ID,ChatId,spend) values (44,244.33.5.55,5000)

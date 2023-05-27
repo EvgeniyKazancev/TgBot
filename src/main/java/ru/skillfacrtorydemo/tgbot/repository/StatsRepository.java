@@ -23,7 +23,7 @@ public class StatsRepository {
     public int getCountOfIncomesThatGreaterThan(BigDecimal amount) {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("amount", amount);
-        jdbcTemplate.queryForObject("SELECT * FROM INCOMES WHERE Id = 1", Income.class);
+       // jdbcTemplate.queryForObject("SELECT * FROM INCOMES WHERE Id = 1", Income.class);
         return namedParameterJdbcTemplate.queryForObject("SELECT count(*) FROM INCOMES WHERE INCOME > :amount", parameters, new StatsRowMapper());
         //return   jdbcTemplate.queryForObject("SELECT count(*) FROM INCOMES WHERE INCOME >?", Integer.class, amount);
     }
