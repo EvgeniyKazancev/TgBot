@@ -1,1 +1,1 @@
-INSERT INTO SPEND (ID,ChatId,spend) values (44,244.33.5.55,5000)
+INSERT INTO SPEND (ID,ChatId,spend) values (44,1001,5000)
