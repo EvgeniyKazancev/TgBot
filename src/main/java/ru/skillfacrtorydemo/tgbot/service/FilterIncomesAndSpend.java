@@ -8,10 +8,9 @@ import ru.skillfacrtorydemo.tgbot.entity.Spend;
 import ru.skillfacrtorydemo.tgbot.repository.IncomeRepository;
 import ru.skillfacrtorydemo.tgbot.repository.SpendRepository;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.function.Predicate;
+
 
 @Service
 @RequiredArgsConstructor

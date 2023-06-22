@@ -6,13 +6,14 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import ru.skillfacrtorydemo.tgbot.entity.ActiveChat;
 import ru.skillfacrtorydemo.tgbot.repository.ActiveChatRepository;
 
+import javax.annotation.Resource;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 public class ActiveChatIdRepositoryTest {
-    @Autowired
+    @Resource
     private ActiveChatRepository activeChatRepository;
 
     @Test
